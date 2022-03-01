@@ -52,6 +52,23 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+   # フォローしたときの処理
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  # フォローしているか判定する処理
+  def follows?(user)
+    follows.include?(user)
+  end
+
+
   private
 
   def book_params
