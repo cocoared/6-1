@@ -10,4 +10,18 @@
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>
+  <div class="field" id="star">
+    <%= f.label :evaluation, "星評価:" %>
+    <%= f.hidden_field :evaluation, id: :review_star %>
+    <script>
+      ('#star').raty({
+        size :36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+       scoreName: 'post[evaluation]',   //  evaluationカラムへの保存
+        half: true,   // 星半分の入力
+      });
+    </script>
+  </div>
 <% end %>
